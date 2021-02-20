@@ -1,5 +1,11 @@
 <template>
   <div>
+    <div class="logo">
+
+    </div>
+    <div>
+      <input>
+    </div>
   </div>
 </template>
 
@@ -7,4 +13,4 @@
 export default {}
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="stylus" scoped></style>
