@@ -9,12 +9,14 @@
         <input class="input"
                type="text"
                name="username"
+               v-model="username"
                placeholder="用户名">
       </div>
       <div class="input-wrapper">
         <input class="input"
                type="password"
                name="password"
+               v-model="password"
                placeholder="密码">
       </div>
       <div class="input-wrapper">
@@ -32,7 +34,15 @@
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'login',
+  data () {
+    return {
+      username: '',
+      password: ''
+    }
+  }
+}
 </script>
 
 <style lang="stylus" scoped>
@@ -79,7 +89,7 @@ export default {}
         background: rgb(235, 236, 240)
         box-shadow: 0.5vh 0.5vh 1vh #d9d9d9, -0.5vh -0.5vh 1vh #ffffff
   .login-background
-    height: 27vh
+    height: 25vh
     background: yellow
     .backimg
       height: 100%
