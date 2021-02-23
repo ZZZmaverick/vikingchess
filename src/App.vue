@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <login></login>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 //import HelloWorld from './components/HelloWorld.vue'
-import login from './components/login.vue'
+//import login from './components/login.vue'
 //import test from './components/test.vue'
 
 export default {
@@ -14,7 +14,7 @@ export default {
   components: {
     //HelloWorld,
     //test,
-    login
+    //login
   }
 }
 </script>
