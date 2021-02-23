@@ -3,6 +3,7 @@ import Router from "vue-router";
 
 import login from "./pages/login.vue";
 import home from "./pages/home.vue";
+import adventure from "./pages/adventure.vue";
 
 Vue.use(Router);
 
@@ -11,7 +12,7 @@ const router = new Router({
     {
       path: "*",
       name: "any",
-      redirect: "/home" //change this
+      redirect: "/login" //change this
     },
     {
       path: "/login",
@@ -22,6 +23,11 @@ const router = new Router({
       path: "/home",
       name: "home",
       component: home
+    },
+    {
+      path: "/adventure",
+      name: "adventure",
+      component: adventure
     }
   ]
 });
