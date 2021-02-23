@@ -2,30 +2,34 @@
   <div class="wrapper">
     <div class="game-level-wrapper">
       <!-- 关卡的信息，用routerview -->
-      <div class="game-level-intro"></div>
+      <div class="game-level-intro">
+        <router-view></router-view>
+      </div>
       <div class="game-level-chose">
-        <span class="game-level"
-              v-for="(item, index) of gameLevel"
-              :key="index">{{item}}</span>
+        <router-link tag="span"
+                     :to="'/adventure/gamelevel/' + String(index)"
+                     class="game-level"
+                     v-for="(item, index) of gameLevel"
+                     :key="index">{{item}}</router-link>
       </div>
     </div>
-    <bottomtab></bottomtab>
+    <bottomtabpro></bottomtabpro>
   </div>
 </template>
 
 <script>
-import bottomtab from '../components/bottomtab.vue'
+import bottomtabpro from '../components/bottomtabpro.vue'
 export default {
   name: 'adventure',
   components: {
-    bottomtab
+    bottomtabpro
   },
   props: {
 
   },
   data () {
     return {
-      gameLevel: ['关卡一', '关卡二', '关卡三', '关卡四', '关卡五', '关卡六'],
+      gameLevel: ['教学关', '关卡一', '关卡二', '关卡三', '关卡四', '关卡五'],
       gameLevelIntro: []
     }
   }
@@ -74,4 +78,6 @@ export default {
         wood-font()
         border-radius: 5vw
         neumorphism-btn()
+      .game-level:hover
+        neumorphism-btn-hover()
 </style>
