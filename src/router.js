@@ -7,6 +7,7 @@ import adventure from "./pages/adventure.vue";
 import gamelevelintro from "./components/gamelevelintro.vue";
 import character from "./pages/character.vue";
 import shop from "./pages/shop.vue";
+import setting from "./pages/setting.vue";
 
 Vue.use(Router);
 
@@ -47,6 +48,11 @@ const router = new Router({
       path: "/shop",
       name: "shop",
       component: shop
+    },
+    {
+      path: "/setting",
+      name: "setting",
+      component: setting
     }
   ]
 });

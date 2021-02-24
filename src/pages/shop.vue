@@ -10,7 +10,7 @@
           <img class="goods-avatar"
                src="/images/goodstest.jpg">
           <div class="goods-des">
-            <div class="goods-name">货品名</div>
+            <div class="goods-name">技能名</div>
             <div class="goods-intro">货品介绍货品介绍货品介绍货品介绍货品介绍</div>
             <div class="goods-price">$1000</div>
           </div>
@@ -24,7 +24,7 @@
           <img class="goods-avatar"
                src="/images/goodstest.jpg">
           <div class="goods-des">
-            <div class="goods-name">货品名</div>
+            <div class="goods-name">装备名</div>
             <div class="goods-intro">货品介绍货品介绍货品介绍货品介绍货品介绍</div>
             <div class="goods-price">$1000</div>
           </div>
@@ -38,7 +38,7 @@
           <img class="goods-avatar"
                src="/images/goodstest.jpg">
           <div class="goods-des">
-            <div class="goods-name">货品名</div>
+            <div class="goods-name">卡牌名</div>
             <div class="goods-intro">货品介绍货品介绍货品介绍货品介绍货品介绍</div>
             <div class="goods-price">$1000</div>
           </div>

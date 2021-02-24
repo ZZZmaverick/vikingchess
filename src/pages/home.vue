@@ -4,7 +4,7 @@
       <div class="homebtn">冒险</div>
       <div class="homebtn">角色</div>
       <div class="homebtn">商店</div>
-      <div class="homebtn">账户</div>
+      <div class="homebtn">设置</div>
     </div>
     <div class="tab-bottom">维京战棋</div>
   </div>
