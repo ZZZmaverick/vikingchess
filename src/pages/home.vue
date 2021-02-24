@@ -19,13 +19,9 @@ export default {
 <style lang="stylus" scoped>
 @import '../mixins/neumorphism.styl'
 @import '../mixins/frostedglass.styl'
+@import '../mixins/wrapper.styl'
 .home
-  height: 100vh
-  width: 100vw
-  margin: 0
-  overflow: hidden
-  background: url('/images/homebackground.jpg')
-  background-size: 100%
+  topwrapper('/images/homebackground.jpg')
   .wrapper
     height: 45%
     width: 45%

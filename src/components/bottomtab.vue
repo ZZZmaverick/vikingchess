@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="bottom-tab">
-      <span class="bottom-msg">页面名</span>
+      <span class="bottom-msg">{{bottommsg}}</span>
       <span class="bottom-back">返回</span>
     </div>
   </div>
@@ -9,7 +9,10 @@
 
 <script>
 export default {
-
+  name: 'bottomtab',
+  props: {
+    bottommsg: String
+  }
 }
 </script>
 

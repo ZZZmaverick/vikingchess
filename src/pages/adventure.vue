@@ -13,7 +13,7 @@
                      :key="index">{{item}}</router-link>
       </div>
     </div>
-    <bottomtabpro></bottomtabpro>
+    <bottomtabpro :bottommsg="' 关卡选择'"></bottomtabpro>
   </div>
 </template>
 
@@ -39,13 +39,9 @@ export default {
 <style lang="stylus" scoped>
 @import '../mixins/neumorphism.styl'
 @import '../mixins/frostedglass.styl'
+@import '../mixins/wrapper.styl'
 .wrapper
-  height: 100vh
-  width: 100vw
-  margin: 0
-  overflow: hidden
-  background: url('/images/mapbackground.jpg')
-  background-size: 100%
+  topwrapper('/images/mapbackground.jpg')
   .game-level-wrapper
     height: 80vh
     width: 80vw
