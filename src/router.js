@@ -6,6 +6,7 @@ import home from "./pages/home.vue";
 import adventure from "./pages/adventure.vue";
 import gamelevelintro from "./components/gamelevelintro.vue";
 import character from "./pages/character.vue";
+import shop from "./pages/shop.vue";
 
 Vue.use(Router);
 
@@ -41,6 +42,11 @@ const router = new Router({
       path: "/character",
       name: "character",
       component: character
+    },
+    {
+      path: "/shop",
+      name: "shop",
+      component: shop
     }
   ]
 });
