@@ -1,16 +1,20 @@
 <template>
-  <div class="wrapper">
+  <div class="gamelevelintro-wrapper">
     <div class="game-level-pic-cover">
       <img class="game-level-pic"
-           :src="gamelevelpic[$route.params.id]">
+           :src="pic">
     </div>
-    <div class="game-level-des">{{gameleveldes[$route.params.id]}}</div>
+    <div class="game-level-des">{{des}}</div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'gamelevelintro',
+  props: {
+    pic: String,
+    des: String
+  },
   data () {
     return {
       gamelevelpic: ['/images/gamelevel0.jpg'],
@@ -21,9 +25,9 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.wrapper
-  height: 100%
-  width: 100%
+.gamelevelintro-wrapper
+  height: 50vh
+  width: 70vw
   background: transparent
   .game-level-pic-cover
     height: 50vw

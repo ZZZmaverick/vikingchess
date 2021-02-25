@@ -3,14 +3,17 @@
     <div class="game-level-wrapper">
       <!-- 关卡的信息，用routerview -->
       <div class="game-level-intro">
-        <router-view></router-view>
+        <gamelevelintro v-show="selected === index"
+                        v-for="(item,index) of gameLevel"
+                        :key="index"
+                        :pic="gamelevelpic[index]"
+                        :des="gameleveldes[index]"></gamelevelintro>
       </div>
       <div class="game-level-chose">
-        <router-link tag="span"
-                     :to="'/adventure/gamelevel/' + String(index)"
-                     class="game-level"
-                     v-for="(item, index) of gameLevel"
-                     :key="index">{{item}}</router-link>
+        <span class="game-level"
+              v-for="(item, index) of gameLevel"
+              :key="index"
+              @click="changeSelected(index)">{{item}}</span>
       </div>
     </div>
     <bottomtabpro :bottommsg="' 关卡选择'"></bottomtabpro>
@@ -19,18 +22,27 @@
 
 <script>
 import bottomtabpro from '../components/bottomtabpro.vue'
+import gamelevelintro from '../components/gamelevelintro.vue'
 export default {
   name: 'adventure',
   components: {
-    bottomtabpro
+    bottomtabpro,
+    gamelevelintro
   },
   props: {
 
   },
   data () {
     return {
+      selected: 0,
       gameLevel: ['教学关', '关卡一', '关卡二', '关卡三', '关卡四', '关卡五'],
-      gameLevelIntro: []
+      gamelevelpic: ['/images/gamelevel0.jpg'],
+      gameleveldes: ['教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关']
+    }
+  },
+  methods: {
+    changeSelected (index) {
+      this.selected = index
     }
   }
 }
@@ -53,6 +65,7 @@ export default {
       height: 50vh
       width: 70vw
       margin: 3vh auto
+      overflow: hidden
       neumorphism-text()
       background: url('/images/parchment.png')
       background-size: 100%

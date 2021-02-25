@@ -4,7 +4,6 @@ import Router from "vue-router";
 import login from "./pages/login.vue";
 import home from "./pages/home.vue";
 import adventure from "./pages/adventure.vue";
-import gamelevelintro from "./components/gamelevelintro.vue";
 import character from "./pages/character.vue";
 import shop from "./pages/shop.vue";
 import setting from "./pages/setting.vue";
@@ -31,13 +30,13 @@ const router = new Router({
     {
       path: "/adventure",
       name: "adventure",
-      component: adventure,
+      component: adventure /* ,
       children: [
         {
           path: "/adventure/gamelevel/:id",
           component: gamelevelintro
         }
-      ]
+      ] */
     },
     {
       path: "/character",
