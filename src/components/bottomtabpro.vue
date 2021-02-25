@@ -3,7 +3,8 @@
     <div class="bottom-tab">
       <span class="bottom-confirm">确认</span>
       <span class="bottom-msg">{{bottommsg}}</span>
-      <span class="bottom-back">返回</span>
+      <span class="bottom-back"
+            @click="back()">返回</span>
     </div>
   </div>
 </template>
@@ -13,6 +14,11 @@ export default {
   name: 'bottomtabpro',
   props: {
     bottommsg: String
+  },
+  methods: {
+    back () {
+      this.$router.go(-1)
+    }
   }
 }
 </script>

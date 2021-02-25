@@ -1,10 +1,18 @@
 <template>
   <div class="home">
     <div class="wrapper">
-      <div class="homebtn">冒险</div>
-      <div class="homebtn">角色</div>
-      <div class="homebtn">商店</div>
-      <div class="homebtn">设置</div>
+      <router-link tag="div"
+                   to="/adventure"
+                   class="homebtn">冒险</router-link>
+      <router-link tag="div"
+                   to="/character"
+                   class="homebtn">角色</router-link>
+      <router-link tag="div"
+                   to="/shop"
+                   class="homebtn">商店</router-link>
+      <router-link tag="div"
+                   to="/setting"
+                   class="homebtn">设置</router-link>
     </div>
     <div class="tab-bottom">维京战棋</div>
   </div>
