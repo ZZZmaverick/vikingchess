@@ -36,14 +36,15 @@ export default {
     return {
       selected: 0,
       gameLevel: ['教学关', '关卡一', '关卡二', '关卡三', '关卡四', '关卡五'],
-      gamelevelpic: ['/images/gamelevel0.jpg'],
-      gameleveldes: ['教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关']
+      gamelevelpic: ['/images/gamelevel0.jpg', '/images/gamelevel1.jpg'],
+      gameleveldes: ['教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关教学关', '关卡一关卡一关卡一关卡一关卡一关卡一关卡一关卡一关卡一关卡一']
     }
   },
   methods: {
     changeSelected (index) {
       this.selected = index
     }
+    //确认btn直接路由跳转到对应关卡
   }
 }
 </script>
