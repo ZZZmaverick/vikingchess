@@ -21,6 +21,7 @@
       </div>
       <div class="input-wrapper">
         <input class="btn"
+               @click.prevent="login()"
                type="submit"
                value="登录">
         <button class="btn">注册</button>
@@ -39,7 +40,20 @@ export default {
   data () {
     return {
       username: '',
-      password: ''
+      password: '',
+      msg: ''
+    }
+  },
+  methods: {
+    login () {
+      this.$axios.post('/login', { username: this.username, password: this.password })
+        .then(result => {
+          console.log(result.data)
+          this.msg = result.data.msg
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   }
 }
