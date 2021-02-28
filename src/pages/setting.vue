@@ -3,7 +3,8 @@
     <div class="setting-wrapper">
       <button class="btn">改用户名</button>
       <button class="btn">修改密码</button>
-      <button class="btn">删除账户</button>
+      <button class="btn"
+              @click="deleteUser()">删除账户</button>
       <button class="btn"
               @click="logout()">退出登录</button>
     </div>
@@ -20,10 +21,30 @@ export default {
   },
   data () {
     return {
-
+      newUsername: '',
+      popupShow: false,
+      popupTitle: '提示',
+      popupMsg: ''
     }
   },
   methods: {
+    deleteUser () {
+      let userData = JSON.parse(localStorage.getItem('userData'))
+      this.$axios.get('/deleteUser', { params: { username: userData.username } })
+        .then(result => {
+          this.popupMsg = result.data.msg
+          if (result.data.status == 1) {
+            /* open写弹出 */
+            this.logout()
+          }
+          else {
+            /* open弹出 */
+          }
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
     logout () {
       //localStorage.clear()
       localStorage.removeItem('userData')
