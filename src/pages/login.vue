@@ -20,40 +20,71 @@
                placeholder="密码">
       </div>
       <div class="input-wrapper">
-        <input class="btn"
-               @click.prevent="login()"
-               type="submit"
-               value="登录">
-        <button class="btn">注册</button>
+        <button class="btn"
+                @click.prevent="login()"
+                type="submit">登录</button>
+        <button class="btn"
+                @click="toRegister()">注册</button>
       </div>
     </div>
     <div class="login-background">
       <img class="backimg"
            src="images/loginbackground.jpg">
     </div>
+    <popup v-model="popupShow"
+           :title="popupTitle"
+           :content="popupMsg"></popup>
   </div>
 </template>
 
 <script>
+import popup from '../components/popup.vue'
 export default {
   name: 'login',
+  components: {
+    popup
+  },
   data () {
     return {
       username: '',
       password: '',
-      msg: ''
+      popupShow: false,
+      popupTitle: '提示',
+      popupMsg: ''
     }
   },
   methods: {
     login () {
-      this.$axios.post('/login', { username: this.username, password: this.password })
-        .then(result => {
-          console.log(result.data)
-          this.msg = result.data.msg
-        })
-        .catch(err => {
-          console.log(err)
-        })
+      if (this.username && this.password) {
+        this.$axios.post('/login', { username: this.username, password: this.password })
+          .then(result => {
+            //console.log(result.data)
+            this.popupMsg = result.data.msg
+            if (result.data.status === 1) {
+              //console.log(result.data.ret)
+              localStorage.setItem('isLogin', 'true')
+              localStorage.setItem('userData', JSON.stringify(result.data.ret))
+              this.$router.push('/home')
+            }
+            else {
+              this.openPopup()
+            }
+          })
+          .catch(err => {
+            console.log(err)
+          })
+      }
+      else {
+        this.popupMsg = '请完整输入用户名和密码'
+        this.openPopup()
+      }
+    },
+    openPopup () {
+      //console.log('openPopup')
+      this.popupShow = true
+    },
+    toRegister () {
+      this.$router.push('/register')
     }
   }
 }
@@ -102,6 +133,8 @@ export default {
         border-radius: 4vh
         background: rgb(235, 236, 240)
         box-shadow: 0.5vh 0.5vh 1vh #d9d9d9, -0.5vh -0.5vh 1vh #ffffff
+      .btn:hover
+        box-shadow: inset 0.5vh 0.5vh 1vh #d9d9d9, inset -0.5vh -0.5vh 1vh #ffffff
   .login-background
     height: 25vh
     background: yellow

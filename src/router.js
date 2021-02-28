@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 
 import login from "./pages/login.vue";
+import register from "./pages/register.vue";
 import home from "./pages/home.vue";
 import adventure from "./pages/adventure.vue";
 import character from "./pages/character.vue";
@@ -12,15 +13,20 @@ Vue.use(Router);
 
 const router = new Router({
   routes: [
-    /* {
+    {
       path: "*",
       name: "any",
       redirect: "/login" //change this
-    }, */
+    },
     {
       path: "/login",
       name: "login",
       component: login
+    },
+    {
+      path: "/register",
+      name: "register",
+      component: register
     },
     {
       path: "/home",
@@ -57,6 +63,26 @@ const router = new Router({
 });
 
 //全局守卫
-/* router.beforeEach() */
+router.beforeEach((to, from, next) => {
+  if (to.path == "/login") {
+    if (localStorage.isLogin === "true") {
+      next("/home");
+    } else {
+      next();
+    }
+  } else if (to.path == "/register") {
+    next();
+  } else {
+    if (from.path == "/login") {
+      next();
+    } else {
+      if (localStorage.isLogin == "true") {
+        next();
+      } else {
+        next("/login");
+      }
+    }
+  }
+});
 
 export default router;

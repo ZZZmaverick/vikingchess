@@ -1,7 +1,11 @@
 <template>
   <div class="wrapper">
     <div class="setting-wrapper">
-      <div class="setting-item"></div>
+      <button class="btn">改用户名</button>
+      <button class="btn">修改密码</button>
+      <button class="btn">删除账户</button>
+      <button class="btn"
+              @click="logout()">退出登录</button>
     </div>
     <bottomtab :bottommsg="'设置'"></bottomtab>
   </div>
@@ -13,6 +17,19 @@ export default {
   name: 'setting',
   components: {
     bottomtab
+  },
+  data () {
+    return {
+
+    }
+  },
+  methods: {
+    logout () {
+      //localStorage.clear()
+      localStorage.removeItem('userData')
+      localStorage.setItem('isLogin', 'false')
+      this.$router.replace('/login')
+    }
   }
 }
 </script>
@@ -27,4 +44,16 @@ export default {
     wrapper(70vh, 70vw, 15vw, auto)
     wood()
     overflow: hidden
+    .btn
+      wrapper(20vw, 60vw, 0, auto)
+      margin-top: 5vw
+      line-height: 20vw
+      font-size: 8vw
+      wood-font()
+      border: 0
+      outline: none
+      border-radius: 6vw
+      neumorphism-btn()
+    .btn:hover
+      neumorphism-btn-hover()
 </style>
