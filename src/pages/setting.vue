@@ -4,20 +4,26 @@
       <button class="btn">改用户名</button>
       <button class="btn">修改密码</button>
       <button class="btn"
-              @click="deleteUser()">删除账户</button>
+              @click="openpopup()">删除账户</button>
       <button class="btn"
               @click="logout()">退出登录</button>
     </div>
     <bottomtab :bottommsg="'设置'"></bottomtab>
+    <popup v-model="popupShow"
+           :title="popupTitle"
+           :content="popupMsg"
+           @confirm="popupConfirm()"></popup>
   </div>
 </template>
 
 <script>
 import bottomtab from "../components/bottomtab.vue"
+import popup from "../components/popupc.vue"
 export default {
   name: 'setting',
   components: {
-    bottomtab
+    bottomtab,
+    popup
   },
   data () {
     return {
@@ -50,6 +56,13 @@ export default {
       localStorage.removeItem('userData')
       localStorage.setItem('isLogin', 'false')
       this.$router.replace('/login')
+    },
+    openpopup () {
+      this.popupMsg = '确定删除账户？'
+      this.popupShow = true
+    },
+    popupConfirm () {
+      this.deleteUser()
     }
   }
 }

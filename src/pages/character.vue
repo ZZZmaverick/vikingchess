@@ -14,7 +14,7 @@
         <span class="ski-equ-text">技</span>
         <span class="ski-equ-item"
               v-for="(item, index) of player.skills"
-              :key="index">{{item}}</span>
+              :key="index"><img :src="'/images/skill' + item + '.svg'"></span>
       </div>
       <div class="ski-equ-line">
         <span class="ski-equ-text">备</span>
@@ -53,6 +53,9 @@ export default {
         cards: [1, 2, 3, 4, 5, 0]
       }
     }
+  },
+  methods: {
+
   }
 }
 </script>
