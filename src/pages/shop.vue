@@ -73,13 +73,17 @@ export default {
       money: 5000,
       ski: [1, 2, 3, 4, 5],
       equ: [2, 3, 4, 5],
-      cards: [3, 2, 3, 4, 5]
+      cards: [3, 2, 3, 4, 5],
+      userData: {}
     }
   },
   methods: {
     changeNav (index) {
       this.selected = index
     }
+  },
+  mounted () {
+    this.userData = JSON.parse(localStorage.getItem('userData'))
   }
 }
 </script>
