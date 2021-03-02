@@ -8,6 +8,7 @@ import adventure from "./pages/adventure.vue";
 import character from "./pages/character.vue";
 import shop from "./pages/shop.vue";
 import setting from "./pages/setting.vue";
+import changepwd from "./pages/changepwd.vue";
 
 Vue.use(Router);
 
@@ -58,6 +59,11 @@ const router = new Router({
       path: "/setting",
       name: "setting",
       component: setting
+    },
+    {
+      path: "/changepwd",
+      name: "changepwd",
+      component: changepwd
     }
   ]
 });

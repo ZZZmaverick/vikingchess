@@ -3,46 +3,33 @@
     <div class="bar-wrapper">
       <img class="bar-img"
            src="images/gamelogo.jpg">
-      <div class="bar-text">账号注册</div>
+      <div class="bar-text">修改密码</div>
     </div>
     <div class="input-wrapper">
       <input class="input"
-             type="text"
-             name="username"
-             v-model="username"
-             placeholder="请输入用户名"
+             type="password"
+             name="password"
+             v-model="curpassword"
+             placeholder="请输入当前密码"
              required>
       <input class="input"
              type="password"
              name="password"
              v-model="password"
-             placeholder="请输入密码"
+             placeholder="请输入新密码"
              required>
       <input class="input"
              type="password"
              name="password2"
              v-model="password2"
-             placeholder="请再次输入密码"
+             placeholder="请再次输入新密码"
              required>
-      <div class="radio-wrapper">
-        <button class="input-radio"
-                :class="{'input-radio-active': gender === 0}"
-                @click="selectGender(0)">男</button>
-        <button class="input-radio"
-                :class="{'input-radio-active': gender === 1}"
-                @click="selectGender(1)">女</button>
-      </div>
-      <input class="input"
-             type="text"
-             name="nickname"
-             v-model="nickname"
-             placeholder="请输入昵称">
     </div>
     <div class="btn-wrapper">
       <button class="btn"
               @click="submit()">提交</button>
       <button class="btn"
-              @click="toLogin()">返回</button>
+              @click="toSetting()">返回</button>
     </div>
     <popup v-model="popupShow"
            :title="popupTitle"
@@ -59,11 +46,9 @@ export default {
   },
   data () {
     return {
-      username: '',
+      curpassword: '',
       password: '',
       password2: '',
-      gender: 0,
-      nickname: '',
       popupShow: false,
       popupTitle: '提示',
       popupMsg: ''
@@ -74,16 +59,14 @@ export default {
       //console.log('openPopup')
       this.popupShow = true
     },
-    selectGender (index) {
-      this.gender = index
-    },
     submit () {
-      if (!this.username) {
-        this.popupMsg = '用户名不能为空'
+      let userData = JSON.parse(localStorage.getItem('userData'))
+      if (!this.curpassword || !this.password || !this.password2) {
+        this.popupMsg = '密码项输入不全'
         this.openPopup()
       }
-      else if (!this.password || !this.password2) {
-        this.popupMsg = '密码不能为空'
+      else if (this.curpassword != userData.password) {
+        this.popupMsg = '当前密码输入错误'
         this.openPopup()
       }
       else if (this.password != this.password2) {
@@ -91,19 +74,19 @@ export default {
         this.openPopup()
       }
       else {
-        this.$axios.post('/register', {
-          username: this.username,
-          password: this.password,
-          gender: this.gender,
-          nickname: this.nickname
+        this.$axios.post('/changepwd', {
+          username: userData.username,
+          password: this.password
         }).then(result => {
           //console.log(result.data)
           this.popupMsg = result.data.msg
           if (result.data.status === 1) {
-            this.$router.push('/login')
+            localStorage.removeItem('userData')
+            localStorage.setItem('isLogin', 'false')
+            this.$router.replace('/login')
           }
           else {
-            this.popupMsg = '注册请求失败'
+            this.popupMsg = '修改密码请求失败'
             this.openPopup()
           }
         })
@@ -112,7 +95,7 @@ export default {
           })
       }
     },
-    toLogin () {
+    toSetting () {
       this.$router.go(-1)
     }
   }

@@ -1,8 +1,9 @@
 <template>
   <div class="wrapper">
     <div class="setting-wrapper">
-      <button class="btn">改用户名</button>
-      <button class="btn">修改密码</button>
+      <button class="btn">修改信息</button>
+      <button class="btn"
+              @click="toChangpwd()">修改密码</button>
       <button class="btn"
               @click="openpopup()">删除账户</button>
       <button class="btn"
@@ -40,11 +41,10 @@ export default {
         .then(result => {
           this.popupMsg = result.data.msg
           if (result.data.status == 1) {
-            /* open写弹出 */
             this.logout()
           }
           else {
-            /* open弹出 */
+            alert('删除请求失败')
           }
         })
         .catch(err => {
@@ -63,6 +63,9 @@ export default {
     },
     popupConfirm () {
       this.deleteUser()
+    },
+    toChangpwd () {
+      this.$router.push('/changepwd')
     }
   }
 }
