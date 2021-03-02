@@ -9,6 +9,7 @@ import character from "./pages/character.vue";
 import shop from "./pages/shop.vue";
 import setting from "./pages/setting.vue";
 import changepwd from "./pages/changepwd.vue";
+import changeinfo from "./pages/changeinfo.vue";
 
 Vue.use(Router);
 
@@ -64,6 +65,11 @@ const router = new Router({
       path: "/changepwd",
       name: "changepwd",
       component: changepwd
+    },
+    {
+      path: "/changeinfo",
+      name: "changeinfo",
+      component: changeinfo
     }
   ]
 });

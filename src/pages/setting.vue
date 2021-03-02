@@ -1,7 +1,8 @@
 <template>
   <div class="wrapper">
     <div class="setting-wrapper">
-      <button class="btn">修改信息</button>
+      <button class="btn"
+              @click="toChangeinfo()">修改信息</button>
       <button class="btn"
               @click="toChangpwd()">修改密码</button>
       <button class="btn"
@@ -66,6 +67,9 @@ export default {
     },
     toChangpwd () {
       this.$router.push('/changepwd')
+    },
+    toChangeinfo () {
+      this.$router.push('/changeinfo')
     }
   }
 }
