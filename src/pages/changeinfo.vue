@@ -71,6 +71,9 @@ export default {
           //console.log(result.data)
           this.popupMsg = result.data.msg
           if (result.data.status === 1) {
+            userData.gender = this.gender
+            userData.nickname = this.nickname
+            localStorage.setItem('userData', JSON.stringify(userData))
             this.$router.push('/home')
           }
           else {
