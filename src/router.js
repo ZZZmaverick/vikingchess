@@ -10,6 +10,7 @@ import shop from "./pages/shop.vue";
 import setting from "./pages/setting.vue";
 import changepwd from "./pages/changepwd.vue";
 import changeinfo from "./pages/changeinfo.vue";
+import fight from "./pages/fight.vue";
 
 Vue.use(Router);
 
@@ -70,6 +71,11 @@ const router = new Router({
       path: "/changeinfo",
       name: "changeinfo",
       component: changeinfo
+    },
+    {
+      path: "/fight:id",
+      name: "fight",
+      component: fight
     }
   ]
 });
