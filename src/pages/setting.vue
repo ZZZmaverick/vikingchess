@@ -21,6 +21,7 @@
 <script>
 import bottomtab from "../components/bottomtab.vue"
 import popup from "../components/popupc.vue"
+import { mapMutations } from 'vuex'
 export default {
   name: 'setting',
   components: {
@@ -36,6 +37,7 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['changeLoginState', 'chageUserData']),
     deleteUser () {
       let userData = JSON.parse(localStorage.getItem('userData'))
       this.$axios.get('/deleteUser', { params: { username: userData.username } })
@@ -54,6 +56,7 @@ export default {
     },
     logout () {
       //localStorage.clear()
+      this.changeLoginState()
       localStorage.removeItem('userData')
       localStorage.setItem('isLogin', 'false')
       this.$router.replace('/login')

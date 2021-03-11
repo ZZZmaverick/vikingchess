@@ -39,6 +39,7 @@
 
 <script>
 import popup from '../components/popup.vue'
+import { mapMutations } from 'vuex'
 export default {
   name: 'login',
   components: {
@@ -54,6 +55,7 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['changeLoginState', 'chageUserData']),
     login () {
       if (this.username && this.password) {
         this.$axios.post('/login', { username: this.username, password: this.password })
@@ -64,6 +66,8 @@ export default {
               //console.log(result.data.ret)
               localStorage.setItem('isLogin', 'true')
               localStorage.setItem('userData', JSON.stringify(result.data.ret))
+              this.changeLoginState()
+              this.changeUserData(result.data.ret)
               this.$router.push('/home')
             }
             else {
